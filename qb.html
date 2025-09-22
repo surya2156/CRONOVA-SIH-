@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curved Background at Top</title>
+   <link rel="stylesheet" href="qbstyle.css">
+</head>
+
+<body>
+   
+    <header id="header">
+      
+        <div class="logo">Cronova</div>
+
+
+        <nav>
+            <ul>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Pricing</a></li>
+            </ul>
+        </nav>
+
+      
+        <div class="auth-buttons">
+            <button class="login">Log in</button>
+            <button class="signup">
+                <span>Sign up</span>
+                <div class="icon">➜</div>
+            </button>
+        </div>
+    </header>
+   
+    <div class="curved-bg" id="curved"></div>
+
+
+    <div class="hero">
+        <h1>Free AI Flowchart Generator</h1>
+        <p>Turn a simple text prompt into a flowchart. Scroll down to see the curve expand at the top.</p>
+        <button>Generate a Flowchart</button>
+    </div>
+
+
+    <section>
+        <h2>Why Choose Us?</h2>
+        <p>
+            OUR AI-driven tools transform your workflow by making processes visual and easy to understand.
+            With advanced animation and parallax effects, your website feels more alive and engaging.
+        </p>
+    </section>
+
+    <script>
+        const curved = document.getElementById("curved");
+
+        window.addEventListener("scroll", () => {
+            let scrollY = window.scrollY;
+            let docHeight = document.body.scrollHeight - window.innerHeight;
+            let progress = scrollY / docHeight;
+
+         
+            let curveHeight = 50 + progress * 100;
+            curved.style.clipPath = `ellipse(120% ${curveHeight}% at 50% 0%)`;
+
+       
+            let angle = 120 + scrollY / 10;
+            let color1 = `hsl(${260 + scrollY / 5}, 80%, 55%)`;
+            let color2 = `hsl(${200 + scrollY / 7}, 90%, 50%)`;
+            curved.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+        });
+        const header = document.getElementById("header");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 30) {
+                header.classList.add("active"); 
+            } else {
+                header.classList.remove("active"); 
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+
