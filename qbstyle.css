@@ -533,4 +533,134 @@
         flex-direction: column;
       }
     }
+
+     /* Reset & Basic Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f8;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    footer {
+      background: #fef9fc;
+      padding: 50px 20px 20px 20px;
+      border-top: 1px solid #e0e0e0;
+      position: relative;
+    }
+
+    /* Footer Container */
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-column h4 {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .footer-column h4::after {
+      content: '▼';
+      font-size: 10px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-column h4.active::after {
+      transform: rotate(-180deg);
+    }
+
+    .footer-column a {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #555;
+      transition: 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #ff4081;
+      transform: translateX(5px);
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+      margin-top: 30px;
+      border-top: 1px solid #e0e0e0;
+      padding-top: 20px;
+      font-size: 12px;
+      color: #777;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .compare-links a {
+      margin-right: 10px;
+      color: #555;
+      transition: 0.3s;
+    }
+
+    .compare-links a:hover {
+      color: #ff4081;
+      text-decoration: underline;
+    }
+
+    .social-icons a {
+      margin-right: 10px;
+      font-size: 18px;
+      color: #555;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ff4081;
+      transform: scale(1.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-column a {
+        display: none;
+      }
+
+      .footer-column.active a {
+        display: block;
+        margin-top: 10px;
+      }
+    }
+
+    /* Animation */
+    footer {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    footer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     
