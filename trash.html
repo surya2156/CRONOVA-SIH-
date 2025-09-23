@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whimsical Style Replica</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: #f8f7f4;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Floating background blob */
+    .bg-blob {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      width: 1200px;
+      height: 1200px;
+      background: radial-gradient(circle at 30% 30%, #fbc2eb, #a6c1ee);
+      border-radius: 50%;
+      transform: translateX(-50%) translateY(-50%) scale(1);
+      filter: blur(100px);
+      opacity: 0.6;
+      z-index: -1;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 120px auto;
+      padding: 20px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    /* Card Base */
+    .card {
+      flex: 1;
+      border-radius: 24px;
+      padding: 40px;
+      min-height: 340px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transform: translateY(60px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Gradient card */
+    .card-gradient {
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-gradient::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1000&q=80") center/cover no-repeat;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .card-gradient h2,
+    .card-gradient p,
+    .card-gradient button {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-gradient h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .card-gradient p {
+      font-size: 1rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* White card */
+    .card-white {
+      background: white;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .card-header img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .card-white h2 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .card-white p {
+      font-size: 1rem;
+      margin-bottom: 24px;
+      color: #555;
+    }
+
+    /* Buttons */
+    button {
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .card-gradient button {
+      background: white;
+      color: #222;
+    }
+
+    .card-white button {
+      background: #4b2aad;
+      color: white;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Background Blob -->
+  <div class="bg-blob"></div>
+
+  <div class="container">
+    <!-- Left Gradient Card -->
+    <div class="card card-gradient">
+      <h2>Jump-start your process</h2>
+      <p>Generate ideas and summarize information with Whimsical AI.</p>
+      <button>Explore mind map AI</button>
+    </div>
+
+    <!-- Right White Card -->
+    <div class="card card-white">
+      <div class="card-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT Logo">
+        <span style="font-weight:600; font-size:1rem; color:#444;">Have ChatGPT Plus?</span>
+      </div>
+      <h2>Check out the Whimsical Diagrams GPT.</h2>
+      <p></p>
+      <button>Explore Whimsical Diagrams GPT</button>
+    </div>
+  </div>
+
+  <script>
+    // Background blob scale effect on scroll
+    const blob = document.querySelector(".bg-blob");
+    window.addEventListener("scroll", () => {
+      let scrollY = window.scrollY;
+      let scale = 1 + scrollY / 1000;
+      let opacity = Math.max(0.3, 1 - scrollY / 1000);
+      blob.style.transform = `translateX(-50%) translateY(-50%) scale(${scale})`;
+      blob.style.opacity = opacity;
+    });
+
+    // Reveal cards on scroll
+    const cards = document.querySelectorAll(".card");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < triggerBottom) {
+          card.classList.add("show");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+</body>
+</html>
+
+
+
