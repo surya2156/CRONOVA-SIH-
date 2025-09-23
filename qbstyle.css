@@ -270,3 +270,267 @@
             background: #fff;
             color: #6c63ff;
         }
+        .platform-section {
+            background: #f9f9fb;
+            color: #111;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .platform-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .platform-section p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 720px;
+            margin: 0 auto 60px;
+        }
+
+        /* ✅ Grid Layout for Cards */
+        .portal-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Card Design */
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 35px 28px;
+            text-align: left;
+            color: #333;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #111;
+        }
+
+        .card ul {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        /* Accent colors */
+        .card:nth-child(1) h3 {
+            color: #2563eb;
+        }
+
+        .card:nth-child(2) h3 {
+            color: #16a34a;
+        }
+
+        .card:nth-child(3) h3 {
+            color: #ca8a04;
+        }
+
+        .card:nth-child(4) h3 {
+            color: #9333ea;
+        }
+
+        .card:nth-child(5) h3 {
+            color: #0d9488;
+        }
+
+        .card:nth-child(6) h3 {
+            color: #b45309;
+        }
+
+        /* ✅ Responsive (for mobile) */
+        @media (max-width: 900px) {
+            .portal-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portal-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+         * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: #ffffff; /* Plain white background */
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 120px auto;
+      padding: 20px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    /* Card Base */
+    .card {
+      flex: 1;
+      border-radius: 20px;
+      padding: 32px;
+      min-height: 300px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transform: translateY(60px);
+      opacity: 0;
+      transition: all 0.8s ease;
+      position: relative;
+    }
+
+    .card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Gradient card */
+    .card-gradient {
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-gradient::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://images.unsplash.com/photo-1679678694631-f05f728621a5?auto=format&fit=crop&w=1000&q=80") center/cover no-repeat;
+      opacity: 0.45;
+      z-index: 0;
+    }
+
+    .card-gradient h2,
+    .card-gradient p,
+    .card-gradient button,
+    .jumpstart-logo {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-gradient h2 {
+      font-size: 1.75rem;
+      margin: 50px 0 10px 0;
+      font-weight: 700;
+    }
+
+    .card-gradient p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .jumpstart-logo {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 32px;
+      height: 32px;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+
+    .jumpstart-logo svg {
+      width: 18px;
+      height: 18px;
+      fill: #4b2aad;
+    }
+
+    /* White card */
+  .card-white {
+  background: #f5f3ff; /* Light lavender */
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-header img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .card-white h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: #2c0e4e;
+    }
+
+    .card-white p {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    /* Buttons */
+    button {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 9999px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .card-gradient button {
+      background: #fff;
+      color: #222;
+    }
+
+    .card-white button {
+      background: #2c0e4e;
+      color: #fff;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+    

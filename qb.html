@@ -6,106 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curved Background at Top</title>
     <link rel="stylesheet" href="qbstyle.css">
-    <style>
-        /* Section background */
-        .platform-section {
-            background: #f9f9fb;
-            color: #111;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .platform-section h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1a1a1a;
-        }
-
-        .platform-section p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 720px;
-            margin: 0 auto 60px;
-        }
-
-        /* ✅ Grid Layout for Cards */
-        .portal-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* Card Design */
-        .card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 35px 28px;
-            text-align: left;
-            color: #333;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: #111;
-        }
-
-        .card ul {
-            font-size: 0.95rem;
-            color: #666;
-            margin: 0;
-            padding-left: 20px;
-            line-height: 1.6;
-        }
-
-        /* Accent colors */
-        .card:nth-child(1) h3 {
-            color: #2563eb;
-        }
-
-        .card:nth-child(2) h3 {
-            color: #16a34a;
-        }
-
-        .card:nth-child(3) h3 {
-            color: #ca8a04;
-        }
-
-        .card:nth-child(4) h3 {
-            color: #9333ea;
-        }
-
-        .card:nth-child(5) h3 {
-            color: #0d9488;
-        }
-
-        .card:nth-child(6) h3 {
-            color: #b45309;
-        }
-
-        /* ✅ Responsive (for mobile) */
-        @media (max-width: 900px) {
-            .portal-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .portal-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+   
 </head>
 
 <body>
@@ -232,7 +133,34 @@
                 </ul>
             </div>
         </div>
+<div class="container">
+    <!-- Left Gradient Card -->
+    <div class="card card-gradient">
+      <div class="jumpstart-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/>
+        </svg>
+      </div>
+      <h2>Jump-start your process</h2>
+      <p>Generate ideas and summarize information with Whimsical AI.</p>
+      <button>Explore mind map AI</button>
+    </div>
+
+    <!-- Right White Card -->
+    <div class="card card-white">
+      <div class="card-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT Logo">
+        <span style="font-weight:600; font-size:0.95rem; color:#444;">Have ChatGPT Plus?</span>
+      </div>
+      <h2>Check out the Whimsical Diagrams GPT.</h2>
+      <p>Check out the Whimsical Diagrams GPT.</p>
+      <button>Explore Whimsical Diagrams GPT</button>
+    </div>
+  </div>
+
     </section>
+
+
 
     <script>
         const curved = document.getElementById("curved");
@@ -259,6 +187,21 @@
                 header.classList.remove("active");
             }
         });
+
+         // Reveal cards on scroll
+    const cards = document.querySelectorAll(".card");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < triggerBottom) {
+          card.classList.add("show");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
     </script>
 
 </body>
