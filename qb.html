@@ -39,6 +39,36 @@
         <p>Turn a simple text prompt into a flowchart. Scroll down to see the curve expand at the top.</p>
         <button>Generate a Flowchart</button>
     </div>
+     <!-- Background Video -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="background.mp4" type="video/mp4">
+    <source src="background.webm" type="video/webm">
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Floating Glow Effects -->
+  <div class="glow"></div>
+  <div class="glow"></div>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Flowchart AI</h1>
+      <p>Build flowcharts with more focus on our no-fuss interface.</p>
+      <ul>
+        <li>Build user flows, processes, and sequence diagrams</li>
+        <li>Create accurate summaries of web pages and articles</li>
+        <li>Visualize competitor site flows and user journeys</li>
+      </ul>
+      <a href="#" class="cta">Get Whimsical ➜</a>
+    </div>
+
+    <div class="hero-demo">
+      <video autoplay loop muted playsinline>
+        <source src="demo.mp4" type="video/mp4">
+        <source src="demo.webm" type="video/webm">
+      </video>
+    </div>
+  </section>
    
 <section class="features">
   
@@ -305,6 +335,23 @@
     }, { threshold: 0.1 });
 
     observer.observe(footer);
+      const reveal=(el,anim,delay=0)=>{
+      el.style.animation=`${anim} 1s ease forwards`;
+      el.style.animationDelay=`${delay}s`;
+    };
+    const items=document.querySelectorAll(".hero-text,.hero-demo,.hero-text ul li,.cta");
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          if(e.target.tagName==="LI") reveal(e.target,"fadeLeft",Math.random()*1.5);
+          else if(e.target.classList.contains("cta")) reveal(e.target,"fadeUp",1.2);
+          else if(e.target.classList.contains("hero-demo")) reveal(e.target,"fadeScale",.6);
+          else reveal(e.target,"fadeUp",.3);
+          obs.unobserve(e.target);
+        }
+      });
+    },{threshold:.2});
+    items.forEach(i=>obs.observe(i));
     </script>
 
 </body>
